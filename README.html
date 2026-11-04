@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="UTF-8">
+            <title>&Eacute;valuation de la Susceptibilit&eacute; aux Inondations et Mod&eacute;lisation Pr&eacute;dictive par Machine Learning</title>
+            <style>
+/* From extension vscode.github */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+.vscode-dark img[src$=\#gh-light-mode-only],
+.vscode-light img[src$=\#gh-dark-mode-only],
+.vscode-high-contrast:not(.vscode-high-contrast-light) img[src$=\#gh-light-mode-only],
+.vscode-high-contrast-light img[src$=\#gh-dark-mode-only] {
+	display: none;
+}
+
+</style>
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
+<link href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item {
+    list-style-type: none;
+}
+
+.task-list-item-checkbox {
+    margin-left: -20px;
+    vertical-align: middle;
+    pointer-events: none;
+}
+</style>
+<style>
+:root {
+  --color-note: #0969da;
+  --color-tip: #1a7f37;
+  --color-warning: #9a6700;
+  --color-severe: #bc4c00;
+  --color-caution: #d1242f;
+  --color-important: #8250df;
+}
+
+</style>
+<style>
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-note: #2f81f7;
+    --color-tip: #3fb950;
+    --color-warning: #d29922;
+    --color-severe: #db6d28;
+    --color-caution: #f85149;
+    --color-important: #a371f7;
+  }
+}
+
+</style>
+<style>
+.markdown-alert {
+  padding: 0.5rem 1rem;
+  margin-bottom: 16px;
+  color: inherit;
+  border-left: .25em solid #888;
+}
+
+.markdown-alert>:first-child {
+  margin-top: 0
+}
+
+.markdown-alert>:last-child {
+  margin-bottom: 0
+}
+
+.markdown-alert .markdown-alert-title {
+  display: flex;
+  font-weight: 500;
+  align-items: center;
+  line-height: 1
+}
+
+.markdown-alert .markdown-alert-title .octicon {
+  margin-right: 0.5rem;
+  display: inline-block;
+  overflow: visible !important;
+  vertical-align: text-bottom;
+  fill: currentColor;
+}
+
+.markdown-alert.markdown-alert-note {
+  border-left-color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-note .markdown-alert-title {
+  color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-important {
+  border-left-color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-important .markdown-alert-title {
+  color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-warning {
+  border-left-color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-warning .markdown-alert-title {
+  color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-tip {
+  border-left-color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-tip .markdown-alert-title {
+  color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-caution {
+  border-left-color: var(--color-caution);
+}
+
+.markdown-alert.markdown-alert-caution .markdown-alert-title {
+  color: var(--color-caution);
+}
+
+</style>
+        
+        </head>
+        <body class="vscode-body vscode-light">
+            <h1 id="évaluation-de-la-susceptibilité-aux-inondations-et-modélisation-prédictive-par-machine-learning">Évaluation de la Susceptibilité aux Inondations et Modélisation Prédictive par Machine Learning</h1>
+<h3 id="cas-détude--commune-de-yeumbeul-nord-dakar-sénégal">Cas d'étude : Commune de Yeumbeul Nord (Dakar, Sénégal)</h3>
+<blockquote>
+<p><strong>Auteur</strong> : M. Ndiaye<br>
+<strong>Cadre</strong> : Analyse Spatiale multicritère (AHP) &amp; Machine Learning appliqué à la gestion des risques hydrologiques<br>
+<strong>Système de Coordonnées de Référence (SCR)</strong> : WGS 84 / UTM Zone 28N (EPSG: 32628)<br>
+<strong>Sources de données</strong> : ANAT, GEOSENEGAL, CSE, SRTM / MNT local</p>
+</blockquote>
+<hr>
+<h2 id="-résumé-du-projet">📌 Résumé du Projet</h2>
+<p>Ce projet a pour objectif d'évaluer et de cartographier la susceptibilité aux inondations dans la <strong>commune de Yeumbeul Nord</strong> par une méthode d'<strong>Analyse Multicritère Hiérarchique (AHP)</strong>, puis d'exploiter ces résultats comme base d'apprentissage pour concevoir un pipeline automatisé de détection des zones à risque basé sur des algorithmes de <strong>Machine Learning</strong> (Random Forest, XGBoost).</p>
+<blockquote>
+<p>⚠️ <em>Note sur les limites administratives</em> : Les découpages communaux utilisés dans cette version préliminaire sont en cours de révision en concertation avec les services techniques municipaux. La structure du rapport et le code sont conçus pour s'actualiser automatiquement lors de la mise à jour des limites.</p>
+</blockquote>
+<hr>
+<h2 id="1-contexte-et-zone-détude">1. Contexte et Zone d'Étude</h2>
+<p>La commune de Yeumbeul Nord, située dans la banlieue dakaroise, est caractérisée par une topographie dunaire alternant entre crêtes sableuses et dépressions interdunaires (niayes) soumises à une forte pression d'urbanisation. Ces dépressions constituent des zones naturelles de convergence des eaux de ruissellement et d'affleurement de la nappe phréatique.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Paramètre</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Localisation</strong></td>
+<td style="text-align:left">Presqu'île du Cap-Vert, Dakar, Sénégal</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Altitude minimale</strong></td>
+<td style="text-align:left">~1.61 m</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Altitude maximale</strong></td>
+<td style="text-align:left">~11.53 m</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Facteurs de risque majeurs</strong></td>
+<td style="text-align:left">Topographie basse, imperméabilisation du sol, remontée de la nappe</td>
+</tr>
+</tbody>
+</table>
+<p><img src="file:///c:\formation_qgis_2026\exo_amc\assets\images\carte_localisation.jpg" alt="Carte de Localisation et Topographie">
+<em>Figure 1 : Carte de situation et modèle altimétrique de Yeumbeul Nord.</em></p>
+<hr>
+<h2 id="2-cartographie-de-la-susceptibilité-par-amc-ahp">2. Cartographie de la Susceptibilité par AMC (AHP)</h2>
+<p>L'approche multicritère Saaty (AHP) a permis de croiser plusieurs facteurs conditionnants prédisposant aux inondations :</p>
+<ol>
+<li><strong>Altitude (MNT)</strong> : Les cuvettes basses favorisent la stagnation.</li>
+<li><strong>Pente (Slope)</strong> : Les faibles pentes ralentissent l'évacuation des eaux.</li>
+<li><strong>Indice d'Humidité Topographique (TWI)</strong> : Identifie les zones d'accumulation d'eau.</li>
+<li><strong>Densité de Drainage (DD)</strong> : Concentration des réseaux hydrographiques naturels ou fossiles.</li>
+<li><strong>Occupation du Sol (LULC)</strong> : Taux d'imperméabilisation et densité du bâti.</li>
+<li><strong>Pédologie</strong> : Propriétés d'infiltration et perméabilité des sols.</li>
+</ol>
+<p>Le résultat a été discrétisé en <strong>5 classes de susceptibilité</strong> :</p>
+<p><img src="file:///c:\formation_qgis_2026\exo_amc\assets\images\carte_susceptibilite.jpg" alt="Carte de Susceptibilité aux Inondations">
+<em>Figure 2 : Carte de susceptibilité aux inondations (AHP) de Yeumbeul Nord.</em></p>
+<hr>
+<h2 id="3-analyse-statistique-et-répartition-des-surfaces">3. Analyse Statistique et Répartition des Surfaces</h2>
+<p>Le calcul zonal sur la commune met en évidence la répartition suivante :</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Classe DN</th>
+<th style="text-align:left">Niveau de Susceptibilité</th>
+<th style="text-align:center">Proportion surfacique (%)</th>
+<th style="text-align:left">Interprétation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><strong>1</strong></td>
+<td style="text-align:left"><strong>Très faible</strong></td>
+<td style="text-align:center"><strong>0.29 %</strong></td>
+<td style="text-align:left">Crêtes dunaires hautes et fortes pentes</td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>2</strong></td>
+<td style="text-align:left"><strong>Faible</strong></td>
+<td style="text-align:center"><strong>5.09 %</strong></td>
+<td style="text-align:left">Zones de versants bien drainées</td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>3</strong></td>
+<td style="text-align:left"><strong>Moyen</strong></td>
+<td style="text-align:center"><strong>65.98 %</strong></td>
+<td style="text-align:left">Zone tampon intermédiaire (majoritaire)</td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>4</strong></td>
+<td style="text-align:left"><strong>Élevé</strong></td>
+<td style="text-align:center"><strong>20.82 %</strong></td>
+<td style="text-align:left">Bordures de bas-fonds et tissu urbain dense</td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>5</strong></td>
+<td style="text-align:left"><strong>Très élevé</strong></td>
+<td style="text-align:center"><strong>7.81 %</strong></td>
+<td style="text-align:left">Cœur des cuvettes et zones inondables récurrentes</td>
+</tr>
+</tbody>
+</table>
+<p><img src="file:///c:\formation_qgis_2026\exo_amc\assets\images\repartition_susceptibilite.png" alt="Graphique de Répartition des Classes">
+<em>Figure 3 : Répartition surfacique des classes de susceptibilité aux inondations.</em></p>
+<hr>
+<h2 id="4-protocole-déchantillonnage-pour-le-machine-learning">4. Protocole d'Échantillonnage pour le Machine Learning</h2>
+<p>Pour dépasser l'approche heuristique (AHP) et automatiser la prédiction par <strong>Machine Learning supervisé</strong>, les classes actuelles sont converties en labels d'entraînement selon la stratégie suivante :</p>
+<h3 id="41-binarisation-et-définition-des-labels">4.1 Binarisation et Définition des Labels</h3>
+<p>Afin d'éviter le bruit et les faux labels (<em>label noise</em>), la classe intermédiaire « Moyen » (qui regroupe 65.98 % du territoire) est écartée de la phase d'entraînement :</p>
+<ul>
+<li><strong>Classe 1 (Inondable / Positif)</strong> : Échantillons prélevés dans la classe <strong>Très élevé</strong> (DN 5) et <strong>Élevé</strong> (DN 4).</li>
+<li><strong>Classe 0 (Non Inondable / Négatif)</strong> : Échantillons prélevés dans la classe <strong>Très faible</strong> (DN 1) et <strong>Faible</strong> (DN 2).</li>
+</ul>
+<h3 id="42-stratégie-spatiale">4.2 Stratégie Spatiale</h3>
+<ul>
+<li><strong>Échantillonnage Aléatoire Stratifié</strong> (<em>Stratified Random Sampling</em>) avec équilibrage (ex: 500 points inondables / 500 points non inondables).</li>
+<li><strong>Distance minimale entre points</strong> (ex: 30 mètres) pour limiter l'autocorrélation spatiale.</li>
+<li><strong>Validation terrain / imagerie</strong> : Croisement avec des images Sentinel-1 (inondations historiques) ou observations locales.</li>
+</ul>
+<h3 id="43-extraction-des-facteurs-prédictifs-covariables">4.3 Extraction des Facteurs Prédictifs (Covariables)</h3>
+<p>Pour chaque point d'échantillon, les valeurs des rasters suivants sont extraites :</p>
+<p class="katex-block"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mtext>Dataset</mtext><mo>=</mo><mo stretchy="false">{</mo><mo stretchy="false">(</mo><msub><mi>X</mi><mi>i</mi></msub><mo separator="true">,</mo><msub><mi>y</mi><mi>i</mi></msub><mo stretchy="false">)</mo><msubsup><mo stretchy="false">}</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>N</mi></msubsup><mspace width="1em"/><mrow><mtext>o</mtext><mover accent="true"><mtext>u</mtext><mo>ˋ</mo></mover><mtext> </mtext></mrow><msub><mi>X</mi><mi>i</mi></msub><mo>=</mo><mo stretchy="false">[</mo><mtext>MNT</mtext><mo separator="true">,</mo><mtext>Pente</mtext><mo separator="true">,</mo><mtext>TWI</mtext><mo separator="true">,</mo><mtext>DD</mtext><mo separator="true">,</mo><mtext>Sol</mtext><mo separator="true">,</mo><mtext>LULC</mtext><mo stretchy="false">]</mo><mo separator="true">,</mo><mtext>  </mtext><msub><mi>y</mi><mi>i</mi></msub><mo>∈</mo><mo stretchy="false">{</mo><mn>0</mn><mo separator="true">,</mo><mn>1</mn><mo stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">\text{Dataset} = \{ (X_i, y_i) \}_{i=1}^N \quad \text{où } X_i = [\text{MNT}, \text{Pente}, \text{TWI}, \text{DD}, \text{Sol}, \text{LULC}], \; y_i \in \{0, 1\}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord text"><span class="mord">Dataset</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.1413em;vertical-align:-0.25em;"></span><span class="mopen">{(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0785em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mclose"><span class="mclose">}</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8913em;"><span style="top:-2.453em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.10903em;">N</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.247em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:1em;"></span><span class="mord text"><span class="mord">o</span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6944em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord">u</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.25em;"><span class="mord">ˋ</span></span></span></span></span></span></span><span class="mord"> </span></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0785em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord text"><span class="mord">MNT</span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord text"><span class="mord">Pente</span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord text"><span class="mord">TWI</span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord text"><span class="mord">DD</span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord text"><span class="mord">Sol</span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord text"><span class="mord">LULC</span></span><span class="mclose">]</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">{</span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">1</span><span class="mclose">}</span></span></span></span></span></p>
+<hr>
+<h2 id="5-structure-du-dépôt">5. Structure du Dépôt</h2>
+<pre><code class="language-plaintext">exo_amc/
+├── assets/
+│   └── images/                       # Cartes et graphiques pour le rapport
+│       ├── carte_localisation.jpg
+│       ├── carte_susceptibilite.jpg
+│       └── repartition_susceptibilite.png
+├── donnees/
+│   ├── ahp_diagramme.csv             # Pourcentages surfaciques par classe
+│   └── figures/                      # Graphiques exportés en haute résolution
+├── generate_chart.py                 # Script automatisé de génération du graphique
+├── README.md                         # Rapport principal en ligne
+└── .gitignore                        # Exclusion des rasters lourds (&gt;50 Mo)
+</code></pre>
+<hr>
+<h2 id="6-prochaines-étapes">6. Prochaines Étapes</h2>
+<ul class="contains-task-list">
+<li class="task-list-item enabled"><input class="task-list-item-checkbox"type="checkbox"> Ajustement du masque communal officiel suite aux retours de la commune.</li>
+<li class="task-list-item enabled"><input class="task-list-item-checkbox"type="checkbox"> Génération de la grille d'échantillons vectoriels (points 1 / 0) dans QGIS / Python.</li>
+<li class="task-list-item enabled"><input class="task-list-item-checkbox"type="checkbox"> Entraînement et comparaison des modèles ML (Random Forest vs XGBoost vs SVM).</li>
+<li class="task-list-item enabled"><input class="task-list-item-checkbox"type="checkbox"> Évaluation des performances (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mi>O</mi><mi>C</mi><mtext>-</mtext><mi>A</mi><mi>U</mi><mi>C</mi></mrow><annotation encoding="application/x-tex">ROC\text{-}AUC</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">ROC</span><span class="mord text"><span class="mord">-</span></span><span class="mord mathnormal">A</span><span class="mord mathnormal" style="margin-right:0.10903em;">U</span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span></span></span></span>, F1-Score, Matrice de confusion).</li>
+</ul>
+
+            <script async src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>
+            
+        </body>
+        </html>

@@ -1,0 +1,27 @@
+# Données lourdes SIG (Rasters et Shapes volumineux)
+donnees/raster/
+donnees/vecteur/
+donnees/donnees-trait/*.tif
+donnees/donnees-trait/*.png
+*.tif
+*.aux.xml
+*.zip
+*.shp
+*.dbf
+*.shx
+*.cpg
+*.prj
+*.qmd
+
+# Python et caches
+__pycache__/
+*.py[cod]
+.matplotlib_cache/
+.ipynb_checkpoints/
+*.log
+
+# Fichiers temporaires QGIS et OS
+*.tmp
+.DS_Store
+Thumbs.db
+
