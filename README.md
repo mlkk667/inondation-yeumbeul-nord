@@ -80,11 +80,6 @@ Afin d'éviter le bruit et les faux labels (*label noise*), la classe intermédi
 - **Distance minimale entre points** (ex: 30 mètres) pour limiter l'autocorrélation spatiale.
 - **Validation terrain / imagerie** : Croisement avec des images Sentinel-1 (inondations historiques) ou observations locales.
 
-### 4.3 Extraction des Facteurs Prédictifs (Covariables)
-Pour chaque point d'échantillon, les valeurs des rasters suivants sont extraites :
-$$\text{Dataset} = \{ (X_i, y_i) \}_{i=1}^N \quad \text{où } X_i = [\text{MNT}, \text{Pente}, \text{TWI}, \text{DD}, \text{Sol}, \text{LULC}], \; y_i \in \{0, 1\}$$
-
----
 
 ## 5. Structure du Dépôt
 
