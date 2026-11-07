@@ -98,7 +98,7 @@ La densité de drainage (km/km²) mesure la concentration linéaire des axes d'�
 | **3 – 5** | **2** | Faible |
 | **1 – 3** | **1** | Très faible |
 
-![Densité de Drainage](assets/images/critere_densite_drainage.jpg)
+![Densité de Drainage](assets/images/critere_densite_drainage.png)
 *Figure 4 : Carte de la densité de drainage reclassifiée.*
 
 ---
