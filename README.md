@@ -162,7 +162,7 @@ Calculée par densité de lignes sous QGIS. Les concentrations supérieures à 9
 | **3 – 5** | **2** | Faible |
 | **1 – 3** | **1** | Très faible |
 
-![Densité de drainage](assets/images/critere_densite_drainage.jpg)
+![Densité de drainage](assets/images/critere_densite_drainage.png)
 *Figure 4 : Carte de la densité de drainage reclassifiée.*
 
 ---
