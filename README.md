@@ -247,6 +247,26 @@ Le raster continu obtenu a été classé en 5 degrés de susceptibilité par la 
 ![Carte Finale de Susceptibilité](assets/images/carte_susceptibilite.jpg)
 *Figure 7 : Carte finale de susceptibilité aux inondations de la commune de Yeumbeul Nord.*
 
+#### Interprétation et Analyse de la Répartition Spatiale
+
+La lecture spatiale de la carte de susceptibilité met en évidence une organisation géographique très contrastée, étroitement gouvernée par la géomorphologie dunaire et le régime hydrologique de la presqu'île du Cap-Vert :
+
+1. **Le pôle critique du Nord et Nord-Ouest (Classes Très élevée et Élevée - Rouge et Orange)** :
+   - **Localisation** : Ces classes à risque maximal encerclent étroitement le **lac Warouwaye** et s'étendent sur les dépressions interdunaires fermées (les Niayes septentrionales).
+   - **Mécanisme physique** : Ce secteur constitue l'exutoire gravitaire ultime de Yeumbeul Nord. Situé à des altitudes inférieures à 3 mètres, il cumule une triple contrainte : des pentes quasi nulles (≤ 2 %), des sols hydromorphes argileux imperméables et la présence d'une nappe phréatique sub-affleurante. Les inondations y sont brutales, récurrentes et caractérisées par une stagnation prolongée de plusieurs mois après l'hivernage.
+
+2. **Les couloirs d'écoulement transversaux (Classe Élevée - Orange)** :
+   - **Localisation** : Forme des axes étroits et ramifiés reliant les dépressions centrales vers la cuvette du lac Warouwaye, orientés selon l'axe longitudinal des dunes (NNE-SSW).
+   - **Mécanisme physique** : Bien que situés à des altitudes intermédiaires (3 à 6 m), ces couloirs concentrent les flux de ruissellement urbain (forte densité de drainage). L'absence de caniveaux primaires et l'occupation anarchique des passages d'eau naturels transforment ces rues en véritables lits de rivières temporaires lors des fortes averses.
+
+3. **Le plateau résidentiel central et méridional (Classe Moyenne - Jaune)** :
+   - **Localisation** : S'étend de manière massive et continue sur la majorité du territoire communal (centre, sud et sud-est).
+   - **Mécanisme physique** : Établi sur des replats sableux (6 à 9 m d'altitude), ce secteur n'est pas inondable lors d'une pluie ordinaire. En revanche, il présente une **vulnérabilité différée** : l'imperméabilisation massive des sols par les habitations et l'absence de réseau d'assainissement entraînent une saturation rapide du sol lors des épisodes pluvieux intenses, provoquant des inondations par stagnation superficielle.
+
+4. **Les cordons dunaires et crêtes sommitales (Classes Faible et Très faible - Vert clair et Vert foncé)** :
+   - **Localisation** : Isolées sur les crêtes des dunes rouges ogoliennes (au sud-ouest et sur les franges orientales) ainsi que sur le cordon dunaire littoral au nord.
+   - **Mécanisme physique** : Bénéficiant des altitudes les plus élevées (9 à 15 m) et de pentes accentuées (> 6 à 7.5 %), ces zones favorisent un ruissellement gravitaire immédiat vers les bas-fonds voisins. De plus, la nature sableuse et très perméable des dunes littorales permet une infiltration rapide de l'eau. Ces crêtes constituent les seules **zones refuges naturelles hors d'eau** de Yeumbeul Nord.
+
 ---
 
 ### 4.2 Objectif 2 : Quantification Surfacique des Classes (QGIS + Excel)
