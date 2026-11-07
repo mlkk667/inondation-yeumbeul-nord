@@ -54,7 +54,7 @@ La commune de Yeumbeul Nord se situe sur la presqu'île du Cap-Vert, dans la ré
 | **Exutoire** | Bassin fermé (endoréique), absence de drainage naturel vers la mer |
 | **Enjeux majeurs** | Habitat très dense, axes routiers stratégiques, cuvettes maraîchères |
 
-![Carte de Localisation](assets/images/carte_localisation.jpg)
+![Carte de Localisation](assets/images/carte_localisation.png)
 *Figure 1 : Carte de situation régionale et topographie de la commune de Yeumbeul Nord.*
 
 ---
