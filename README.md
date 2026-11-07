@@ -30,7 +30,7 @@ Le présent travail s'inscrit dans cette lignée en mobilisant les outils modern
 
 ## 2. Présentation de la Zone d'Étude
 
-La commune de Yeumbeul Nord est située dans la région de Dakar, au cœur du département de Keur Massar (anciennement rattaché à Pikine). Elle s'étend entre les coordonnées UTM Zone 28N : $X \in [245000, 250000]$ m et $Y \in [1634000, 1637500]$ m.
+La commune de Yeumbeul Nord est située dans la région de Dakar, au cœur du département de Keur Massar (anciennement rattaché à Pikine). Elle s'étend entre les coordonnées UTM Zone 28N : X compris entre 245 000 m et 250 000 m, et Y compris entre 1 634 000 m et 1 637 500 m.
 
 | Paramètre | Caractéristique |
 | :--- | :--- |
@@ -72,11 +72,11 @@ L'altitude est le facteur physique directeur. L'eau s'accumule sous l'effet de l
 ---
 
 ### 3.2 Facteur 2 : La Pente du Terrain (Slope)
-La pente contrôle directement la vitesse d'écoulement de l'eau. Sur les surfaces planes ($< 2\,\%$), le ruissellement est quasi nul, favorisant une stagnation prolongée des eaux pluviales. Les pentes plus fortes favorisent une évacuation gravitaire rapide vers les bas-fonds.
+La pente contrôle directement la vitesse d'écoulement de l'eau. Sur les surfaces planes (inférieures à 2 %), le ruissellement est quasi nul, favorisant une stagnation prolongée des eaux pluviales. Les pentes plus fortes favorisent une évacuation gravitaire rapide vers les bas-fonds.
 
 | Tranche de pente (%) | Note de susceptibilité | Niveau de risque |
 | :---: | :---: | :--- |
-| **$\le$ 2 %** | **5** | Très élevé (Stagnation maximale) |
+| **≤ 2 %** | **5** | Très élevé (Stagnation maximale) |
 | **2 – 4 %** | **4** | Élevé |
 | **4 – 6 %** | **3** | Moyen |
 | **6 – 7.5 %** | **2** | Faible |
@@ -88,9 +88,9 @@ La pente contrôle directement la vitesse d'écoulement de l'eau. Sur les surfac
 ---
 
 ### 3.3 Facteur 3 : La Densité de Drainage
-La densité de drainage ($km/km^2$) mesure la concentration linéaire des axes d'écoulement et des ravines par unité de surface. Une forte densité indique une forte convergence des flux d'eaux pluviales vers un secteur réduit.
+La densité de drainage (km/km²) mesure la concentration linéaire des axes d'écoulement et des ravines par unité de surface. Une forte densité indique une forte convergence des flux d'eaux pluviales vers un secteur réduit.
 
-| Densité ($km/km^2$) | Note de susceptibilité | Niveau de risque |
+| Densité (km/km²) | Note de susceptibilité | Niveau de risque |
 | :---: | :---: | :--- |
 | **9 – 13** | **5** | Très élevé (Convergence intense) |
 | **7 – 9** | **4** | Élevé |
@@ -156,25 +156,35 @@ L'importance relative des critères a été évaluée selon l'échelle standard 
 | **Pédologie** | 0.250 | 0.333 | 0.500 | 1.000 | 2.000 |
 | **Occupation Sol** | 0.200 | 0.250 | 0.333 | 0.500 | 1.000 |
 
-### 4.2 Vecteur des Poids ($W_i$) et Validation de Cohérence
+### 4.2 Vecteur des Poids  et Validation de Cohérence
 Après normalisation par colonne et calcul de la moyenne géométrique de chaque ligne, les poids relatifs obtenus sont :
 
-$$\text{Poids (Altitude)} = 41.62\,\% \quad | \quad \text{Poids (Pente)} = 26.18\,\%$$
-$$\text{Poids (Densité Drainage)} = 16.10\,\% \quad | \quad \text{Poids (Pédologie)} = 9.86\,\% \quad | \quad \text{Poids (Occupation)} = 6.24\,\%$$
+| Facteur conditionnant | Poids relatif (%) | Poids décimal appliqué |
+| :--- | :---: | :---: |
+| **Altitude (MNT)** | **41.62 %** | 0.4162 |
+| **Pente du terrain** | **26.18 %** | 0.2618 |
+| **Densité de drainage** | **16.10 %** | 0.1610 |
+| **Pédologie (Types de sol)** | **9.86 %** | 0.0986 |
+| **Occupation du sol (LULC)** | **6.24 %** | 0.0624 |
+| **TOTAL** | **100.00 %** | **1.0000** |
 
-#### Test de cohérence mathématique :
-- Valeur propre maximale ($\lambda_{\max}$) = **5.0678**
-- Indice de Cohérence : $CI = \frac{\lambda_{\max} - n}{n - 1} = \frac{5.0678 - 5}{4} = \mathbf{0.0169}$
-- Indice Aléatoire pour $n = 5$ critères : $RI = \mathbf{1.12}$
-- **Ratio de Cohérence ($CR$)** :
-  $$CR = \frac{CI}{RI} = \frac{0.0169}{1.12} = \mathbf{0.0151} \quad (1.51\,\%)$$
+#### Test de cohérence mathématique de Saaty :
+- **Nombre de critères (n)** = 5
+- **Valeur propre maximale (λ max)** = **5.0678**
+- **Indice de Cohérence (CI)** :  
+  `CI = (λ max - n) / (n - 1) = (5.0678 - 5) / 4 = 0.0169`
+- **Indice Aléatoire (RI)** pour 5 critères : **1.12**
+- **Ratio de Cohérence (CR)** :  
+  `CR = CI / RI = 0.0169 / 1.12 = 0.0151` (soit **1.51 %**)
 
-> **Validation** : Le ratio de cohérence $CR = 1.51\,\%$ est largement inférieur au seuil critique de $10\,\%$ ($CR < 0.10$). Les jugements de la matrice sont donc parfaitement cohérents et validés scientifiquement.
+> **Validation** : Le ratio de cohérence (**CR = 1.51 %**) est largement inférieur au seuil critique de **10 %** (CR < 0.10). Les jugements de la matrice de Saaty sont donc parfaitement cohérents et mathématiquement validés.
 
 ### 4.3 Combinaison Linéaire Pondérée (WLC)
 L'intégration spatiale a été exécutée dans la calculatrice raster de QGIS selon l'équation de Combinaison Linéaire Pondérée (*Weighted Linear Combination*) :
 
-$$\text{AHP} = (0.4162 \times \text{Altitude}) + (0.2618 \times \text{Pente}) + (0.1610 \times \text{Densité Drainage}) + (0.0986 \times \text{Pédologie}) + (0.0624 \times \text{Occupation})$$
+```plaintext
+Score AHP = (0.4162 × Altitude) + (0.2618 × Pente) + (0.1610 × Densité Drainage) + (0.0986 × Pédologie) + (0.0624 × Occupation)
+```
 
 ---
 
