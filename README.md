@@ -8,7 +8,7 @@
 
 ---
 
-## 📌 Résumé du Projet
+## Résumé du Projet
 
 Ce projet a pour objectif d'évaluer et de cartographier la susceptibilité aux inondations dans la **commune de Yeumbeul Nord** par une méthode d'**Analyse Multicritère Hiérarchique (AHP)**, puis d'exploiter ces résultats comme base d'apprentissage pour concevoir un pipeline automatisé de détection des zones à risque basé sur des algorithmes de **Machine Learning** (Random Forest, XGBoost).
 
@@ -16,9 +16,25 @@ Ce projet a pour objectif d'évaluer et de cartographier la susceptibilité aux 
 
 ---
 
-## 1. Contexte et Zone d'Étude
+## I. Introduction : 
 
-La commune de Yeumbeul Nord, située dans la banlieue dakaroise, est caractérisée par une topographie dunaire alternant entre crêtes sableuses et dépressions interdunaires (niayes) soumises à une forte pression d'urbanisation. Ces dépressions constituent des zones naturelles de convergence des eaux de ruissellement et d'affleurement de la nappe phréatique.
+
+
+
+Les inondations font partie des risques naturels les plus destructeurs au monde **(li,2026)**. Elles sont caractérisées par la submersion temporaire d'une zone par l'eau. La complexité de lutter contre cette risque reside dans le fait qu'il existe differents type d'inondation. Ainsi on distingue les inondations de type: urbaine, torrantielle, fluvial, côtière et pluviale. Cependant il est imperatif de trouver des moyen de lutter contre cette aléa car elle est une menance pour les enjeux tels que la production agricole, les biens materiels les infrastructure et les personnes etc.  
+L'épisode de la secheresse des années 1970 marque un tournant du plan d'urbanisation de Dakar. En effet, pour fuire la famine occasionner par la sécheresse, les populations des milieu ruraux ont affluées massivement vers la capitale. Ainsi la peripherie de Dakar commence a etre occupé de manière informel par les populations. Cependant les zones occupé ne respecte pas toujours le plan d'urbanisme et pour la plus part c'etais des plan d'eau asseché se trouvant dans des bas-fond, par conse quent ces zone sont extremenet sensible aux risque d'iondation à la moindre averse. C'est le cas de la commune de Yeumbeul Nord qui est une zone d'expansion et qui fait face regulierement à des inondations dont les episode les plus marquant sont 2005,2009 et 2012 **(Sy,2019)**.
+Plusieur etude on deja ete realiser sur la commune de Yeumbeul Nord pour cartographier la susceptibilité aux inondations basé sur une approche qualitative(AHP), on peut cité les travaux de le **Dr Sy(2019)** et **Mr Diongue (2014)**. Cette etude se veut une continuite de ces traveaux en proposant une approche hybride. Ainsi notre etude tourne autour de la question suivante: " A quel point la combinaisant de l'analyse multicritaire(AHP) et algorithmique(le Machine Learning) peuvent nous aider a determiner avec plus de precision la probablité d'inondation d'une secteur donnée et maniere dynamique à Yeumbeul?
+
+
+## II. Zone d'etude: 
+Le Sénégal est un pays d'Afrique occidentale. Sa capitale Dakar se situer autour des **14.6937° N** de Latitude et **-17.4441° W** de Longitude, c'est dans cette presqu'il que se trouve la communes de Yeumbeul Nord notre région d'étude. Ce dernier fais partie du Departement de Pikine 
+
+
+
+
+
+
+
 
 | Paramètre | Description |
 | :--- | :--- |
