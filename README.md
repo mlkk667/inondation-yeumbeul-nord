@@ -108,8 +108,8 @@ Toutes les couches ont été projetées dans le système officiel **WGS 84 / UTM
 | **Altitude (MNT)** | Raster 5m | CSE / MNT local | Piégeage gravitaire des eaux dans les points bas |
 | **Pente (Slope)** | Raster 5m | Dérivé du MNT | Vitesse d'écoulement et stagnation superficielle |
 | **Densité de drainage** | Raster 5m | Réseau hydrographique | Concentration spatiale des écoulements |
-| **Pédologie** | Vecteur $\rightarrow$ Raster 5m | Direction des Sols / CSE | Taux d'infiltration et perméabilité lithologique |
-| **Occupation du sol** | Vecteur $\rightarrow$ Raster 5m | ANAT / GeoSénégal | Imperméabilisation et rétention de surface |
+| **Pédologie** | Vecteur ➔ Raster 5m | Direction des Sols / CSE | Taux d'infiltration et perméabilité lithologique |
+| **Occupation du sol** | Vecteur ➔ Raster 5m | ANAT / GeoSénégal | Imperméabilisation et rétention de surface |
 | **Enjeux Bâti** | Vecteur (Polygones) | Cadastre / BD Urbaine | Localisation des habitations exposées |
 | **Enjeux Routes** | Vecteur (Lignes) | Voirie urbaine / OSM | Axes de circulation vulnérables aux coupures |
 
@@ -136,7 +136,7 @@ L'eau s'accumule dans les dépressions d'altitude inférieure à 3 mètres (Note
 ---
 
 #### Facteur 2 : La Pente du Terrain (%)
-Générée via l'outil *Pente* de QGIS. Les zones planes (pente $\le$ 2 %) empêchent l'évacuation pluviale et reçoivent la note 5. Les fortes pentes (> 7.5 %) facilitent le drainage gravitaire.
+Générée via l'outil *Pente* de QGIS. Les zones planes (pente ≤ 2 %) empêchent l'évacuation pluviale et reçoivent la note 5. Les fortes pentes (> 7.5 %) facilitent le drainage gravitaire.
 
 | Pente (%) | Note de susceptibilité | Appréciation |
 | :---: | :---: | :--- |
@@ -211,7 +211,7 @@ La matrice a été injectée dans le plugin QGIS **Easy AHP** pour calculer auto
 | **Pédologie** | 0.250 | 0.333 | 0.500 | 1.000 | 2.000 |
 | **Occupation Sol** | 0.200 | 0.250 | 0.333 | 0.500 | 1.000 |
 
-#### Poids relatifs obtenus ($W_i$) :
+#### Poids relatifs obtenus :
 - **Altitude (MNT)** : **41.62 %** (poids décimal = 0.4162)
 - **Pente du terrain** : **26.18 %** (poids décimal = 0.2618)
 - **Densité de drainage** : **16.10 %** (poids décimal = 0.1610)
@@ -254,7 +254,7 @@ Le raster continu obtenu a été classé en 5 degrés de susceptibilité par la 
 Pour quantifier précisément chaque classe :
 1. Le raster AHP a été vectorisé en polygones (`ahp_final.shp`) dans QGIS.
 2. Les polygones ont été dissous/combinés par code de classe (DN 1 à 5).
-3. Les superficies ont été calculées via la calculatrice de champs (`$area`).
+3. Les superficies ont été calculées via la calculatrice de champs (fonction d'aire automatique de QGIS).
 4. Les données ont été traitées sous **Microsoft Excel** pour calculer les proportions relatives en pourcentage (%) et générer le diagramme de synthèse, puis exportées sous `ahp_diagramme.csv`.
 
 | Classe DN | Degré de Susceptibilité | Proportion (%) | Diagnostic territorial |
@@ -274,12 +274,12 @@ Pour quantifier précisément chaque classe :
 
 Pour évaluer concrètement l'impact des inondations sur les activités humaines et les infrastructures, la couche vectorielle de susceptibilité (`ahp_final.shp`) est croisée par l'outil **Intersection** de QGIS avec les couches d'enjeux :
 
-#### A. Exposition du Bâti (`ahp_final` $\cap$ `bati`)
+#### A. Exposition du Bâti (Intersection : couche AHP ⋂ couche Bâti)
 L'intersection spatiale permet d'identifier le nombre et l'emprise des bâtiments situés dans les zones de susceptibilité **Élevée** et **Très élevée** :
 - Les constructions établies dans les dépressions interdunaires présentent une vulnérabilité structurelle majeure due à la stagnation prolongée de l'eau et aux fissurations par remontée de nappe.
 - *Livrable cartographique associé* : `enjeux_bati.png` (en cours de finalisation).
 
-#### B. Exposition du Réseau Routier (`ahp_final` $\cap$ `routes`)
+#### B. Exposition du Réseau Routier (Intersection : couche AHP ⋂ couche Routes)
 Le croisement avec les axes de voirie calcule le linéaire de routes (en kilomètres) submersible :
 - L'inondation des axes routiers stratégiques de Yeumbeul Nord entraîne l'enclavement immédiat de plusieurs quartiers et empêche le passage des motopompes et des véhicules de secours.
 - *Livrable cartographique associé* : `enjeux_routes.png` (en cours de finalisation).
